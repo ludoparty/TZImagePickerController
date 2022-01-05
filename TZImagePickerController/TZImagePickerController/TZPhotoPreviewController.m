@@ -199,6 +199,10 @@
     _layout = [[UICollectionViewFlowLayout alloc] init];
     _layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_layout];
+    if (@available(iOS 9.0, *)) {
+        _collectionView.semanticContentAttribute = [TZCommonTools tz_isRightToLeftLayout] ? UISemanticContentAttributeForceRightToLeft : UISemanticContentAttributeForceLeftToRight;
+    } else {
+    }
     _collectionView.backgroundColor = [UIColor blackColor];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
